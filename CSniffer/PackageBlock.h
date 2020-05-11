@@ -22,6 +22,12 @@ private:
     Ui::PackageBlock *ui;
     Package _package;
 
+signals:
+    void clicked();
+
+protected:
+    void mousePressEvent(QMouseEvent* event);
+
 };
 
 #endif // PACKAGEBLOCK_H

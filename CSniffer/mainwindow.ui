@@ -66,8 +66,8 @@
             </property>
             <property name="styleSheet">
              <string notr="true">background-color: #b4f5a6;
-border: none; 
 border-radius: 5px;
+border: none; 
 min-height: 40px;</string>
             </property>
             <property name="text">
@@ -101,17 +101,21 @@ margin-bottom: 20px;</string>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QLabel" name="hostNameLabel">
-            <property name="font">
-             <font>
-              <family>Swis721 Cn BT</family>
-              <pointsize>9</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout_5">
+            <item>
+             <widget class="QLabel" name="hostNameLabel">
+              <property name="font">
+               <font>
+                <family>Swis721 Cn BT</family>
+                <pointsize>9</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -157,6 +161,19 @@ margin-bottom: 20px;</string>
            </layout>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
+            <item>
+             <widget class="QComboBox" name="protocolSearch"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="srcIpSearch"/>
+            </item>
+            <item>
+             <widget class="QComboBox" name="destinationIpSearch"/>
+            </item>
+           </layout>
+          </item>
+          <item>
            <widget class="QScrollArea" name="scrollArea">
             <property name="widgetResizable">
              <bool>true</bool>
@@ -167,7 +184,7 @@ margin-bottom: 20px;</string>
                <x>0</x>
                <y>0</y>
                <width>642</width>
-               <height>379</height>
+               <height>345</height>
               </rect>
              </property>
             </widget>
@@ -180,41 +197,49 @@ margin-bottom: 20px;</string>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="infoLabel">
-          <property name="font">
-           <font>
-            <family>Swis721 Cn BT</family>
-            <pointsize>9</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-weight: bold;</string>
-          </property>
-          <property name="text">
-           <string>Info</string>
-          </property>
-         </widget>
+         <layout class="QVBoxLayout" name="infoLayout">
+          <item>
+           <widget class="QLabel" name="infoLabel">
+            <property name="font">
+             <font>
+              <family>Swis721 Cn BT</family>
+              <pointsize>9</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;</string>
+            </property>
+            <property name="text">
+             <string>Info</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QLabel" name="dataLabel">
-          <property name="font">
-           <font>
-            <family>Swis721 Cn BT</family>
-            <pointsize>9</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-weight: bold;
+         <layout class="QVBoxLayout" name="dataLayout">
+          <item>
+           <widget class="QLabel" name="dataLabel">
+            <property name="font">
+             <font>
+              <family>Swis721 Cn BT</family>
+              <pointsize>9</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">font-weight: bold;
 </string>
-          </property>
-          <property name="text">
-           <string>Data</string>
-          </property>
-         </widget>
+            </property>
+            <property name="text">
+             <string>Data</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
@@ -231,8 +256,25 @@ margin-bottom: 20px;</string>
      <height>26</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionCler"/>
+   </widget>
+   <addaction name="menuTools"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionCler">
+   <property name="icon">
+    <iconset>
+     <normalon>C:/Users/Asus/Downloads/icons8-метла-40.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Cler</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

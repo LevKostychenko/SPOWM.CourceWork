@@ -10,12 +10,14 @@ class SniffManager : public QObject
 public:
     SniffManager(QString ip);
     Package GetLastAddedPackage();
+    void ResetPackages();
     void SetNewIp(QString ip);
 
 private:
     SnifferLogicBase* _snifferLogic;
     QString _ip;
     QList<Package>* _current_packages;
+    bool isContinueSniff;
 
 public slots:
     void start_sniff();

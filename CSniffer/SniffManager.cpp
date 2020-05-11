@@ -10,9 +10,9 @@ SniffManager::SniffManager(QString ip)
 void SniffManager::start_sniff()
 {
     _snifferLogic->ConfigureSocket(this->_ip);
-    bool isContinue = true;
+    this->isContinueSniff = true;
 
-    while (isContinue)
+    while (this->isContinueSniff)
     {
         Package package = this->_snifferLogic->ParseIPHeader(this->_snifferLogic->StartSniff());
 
@@ -36,7 +36,7 @@ void SniffManager::SetNewIp(QString ip)
 
 void SniffManager::stop_sniff()
 {
-    emit this->close_sniffer();
+    this->isContinueSniff = false;
 }
 
 Package SniffManager::GetLastAddedPackage()
@@ -47,4 +47,12 @@ Package SniffManager::GetLastAddedPackage()
     }
 
     throw new SnifferException("No sniffed packages.");
+}
+
+void SniffManager::ResetPackages()
+{
+    if (this->_current_packages != nullptr && !this->_current_packages->isEmpty())
+    {
+        this->_current_packages->clear();
+    }
 }
