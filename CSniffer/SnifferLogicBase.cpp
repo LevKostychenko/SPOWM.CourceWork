@@ -4,3 +4,9 @@ SnifferLogicBase::SnifferLogicBase()
 {
 
 }
+
+SnifferLogicBase::~SnifferLogicBase()
+{
+
+}
+

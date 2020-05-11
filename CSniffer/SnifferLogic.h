@@ -7,22 +7,25 @@
 //Включаем netapi32.lib для использования функций NetApi
 #pragma comment(lib, "netapi32.lib")
 #include "HostLogic.h"
+#include "SnifferException.h"
 
 class SnifferLogic : public SnifferLogicBase
 {
 public:
     SnifferLogic();
+    ~SnifferLogic();
 
-    void ConfigureHost(int port) override;
-    void ConfigureSocket() override;
-    void StartSniff() override;
+    void ConfigureSocket(QString binding_ip) override;
+    IPHeader* StartSniff() override;
     QString PackageToString(Package package) override;
+    Package ParseIPHeader(IPHeader* ip_header) override;
 
 private:
-    int SIO_RCVALL = 0x98000001;
     SOCKET raw_socket;
     SOCKADDR_IN socket_addr;
-    HostLogicBase *_host_logic;
+    HostLogicBase* _host_logic;
+    ProtocolEnum GetProtocol(unsigned char protocol);
+    QString ProtocolToString(ProtocolEnum protocol);
 };
 
 #endif // SNIFFERLOGIC_H

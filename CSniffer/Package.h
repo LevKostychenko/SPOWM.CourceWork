@@ -18,6 +18,7 @@ public:
     bool IsForThisHost;
     bool IsFromThisHost;
     bool IsBodyCoded;
+    QString StringProtocol;
 };
 
 #endif // PACKAGE_H

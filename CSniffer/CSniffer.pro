@@ -18,6 +18,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     HostLogic.cpp \
     HostLogicBase.cpp \
+    PackageBlock.cpp \
+    SniffManager.cpp \
+    SnifferException.cpp \
     SnifferLogic.cpp \
     SnifferLogicBase.cpp \
     main.cpp \
@@ -27,14 +30,19 @@ HEADERS += \
     HostLogic.h \
     HostLogicBase.h \
     HttpMethodEnum.h \
+    IPHeader.h \
     Package.h \
+    PackageBlock.h \
     ProtocolEnum.h \
+    SniffManager.h \
+    SnifferException.h \
     SnifferLogic.h \
     SnifferLogicBase.h \
     mainwindow.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    packageblock.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

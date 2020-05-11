@@ -12,7 +12,7 @@ CHAR* HostLogic::GetHostName()
 
     if (!host_name)
     {
-        throw new QException();
+        throw new SnifferException("Cannot get host name.");
     }
 
     return host_name;
@@ -24,8 +24,24 @@ HOSTENT* HostLogic::GetHostByName(CHAR* host_name)
 
     if (!phe)
     {
-        throw new QException();
+        throw new SnifferException("Cannot get host.");
     }
 
     return phe;
+}
+
+QList<QString> HostLogic::GetHostIp(HOSTENT* host)
+{
+    QList<QString> ip_list;
+
+    for(int i = 0; host->h_addr_list[i] != NULL; i++)
+    {
+        QString ip_buffer = QString(inet_ntoa(*((struct in_addr*)host->h_addr_list[i])));
+        if (!ip_buffer.isNull() && !ip_buffer.isEmpty())
+        {
+            ip_list.append(ip_buffer);
+        }
+    }
+
+    return ip_list;
 }

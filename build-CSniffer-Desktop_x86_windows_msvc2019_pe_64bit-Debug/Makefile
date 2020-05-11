@@ -259,6 +259,7 @@ Makefile: ..\CSniffer\CSniffer.pro ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspe
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\qt_config.prf \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\win32-msvc\qmake.conf \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\exclusive_builds.prf \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\common\msvc-version.conf \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\toolchain.prf \
@@ -288,7 +289,6 @@ Makefile: ..\CSniffer\CSniffer.pro ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspe
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Gui.prl \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Core.prl \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\qtmain.prl \
-		.qmake.stash \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\build_pass.prf \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Widgetsd.prl \
 		..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Guid.prl \
@@ -470,6 +470,7 @@ Makefile: ..\CSniffer\CSniffer.pro ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspe
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\qt_config.prf:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\win32-msvc\qmake.conf:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\spec_post.prf:
+.qmake.stash:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\exclusive_builds.prf:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\common\msvc-version.conf:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\toolchain.prf:
@@ -499,7 +500,6 @@ Makefile: ..\CSniffer\CSniffer.pro ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspe
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Gui.prl:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Core.prl:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\qtmain.prl:
-.qmake.stash:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\mkspecs\features\build_pass.prf:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Widgetsd.prl:
 ..\..\..\Qt\Qt5.14.2\5.14.2\msvc2015_64\lib\Qt5Guid.prl:

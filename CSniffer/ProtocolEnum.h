@@ -4,7 +4,16 @@
 enum ProtocolEnum
 {
     HTTP,
-    HTTPS
+    HTTPS,
+    ICMP,
+    IGMP,
+    GGP,
+    TCP,
+    PUP,
+    UDP,
+    IPV6,
+    ND,
+    UNDEF
 };
 
 #endif // PROTOCOLENUM_H
