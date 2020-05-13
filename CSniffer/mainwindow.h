@@ -34,6 +34,7 @@ private:
     void UpdateScrollArea(QList<Package> packages);
     void UpplyFilters();
     bool IsPackageSuitableForApplyingFilters(Package package);
+    void ShowMessageWindow(QString message);
     SniffManager* _sniffManager;
     QThread* _managerThread;
     bool is_manager_thread_created;
@@ -56,5 +57,6 @@ private slots:
     void on_protocolSearch_currentIndexChanged(const QString &arg1);
     void on_srcIpSearch_currentIndexChanged(const QString &arg1);
     void on_destinationIpSearch_currentIndexChanged(const QString &arg1);
+    void on_error_occured(SnifferException* exception);
 };
 #endif // MAINWINDOW_H

@@ -12,9 +12,10 @@ public:
     QString SourceIp;
     ProtocolEnum Protocol;
     HttpMethodEnum HttpMethod;
-    QString HttpVersion;
+    QString Version;
     int RequestSize;
-    QString RequestBody;
+    QString PayloadHexData;
+    QString PayloadASCIIData;
     bool IsForThisHost;
     bool IsFromThisHost;
     bool IsBodyCoded;

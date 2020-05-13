@@ -16,9 +16,8 @@ public:
     ~SnifferLogic();
 
     void ConfigureSocket(QString binding_ip) override;
-    IPHeader* StartSniff() override;
+    Package StartSniff() override;
     QString PackageToString(Package package) override;
-    Package ParseIPHeader(IPHeader* ip_header) override;
 
 private:
     SOCKET raw_socket;
@@ -26,6 +25,9 @@ private:
     HostLogicBase* _host_logic;
     ProtocolEnum GetProtocol(unsigned char protocol);
     QString ProtocolToString(ProtocolEnum protocol);
+    Package ParceTCPHeader(char* buffer, IPHeader* ip_header, int size);
+    Package ParceUDPHeader(char* buffer, IPHeader* ip_header, int size);
+    void GetData(char* data, int size, Package* package);
 };
 
 #endif // SNIFFERLOGIC_H

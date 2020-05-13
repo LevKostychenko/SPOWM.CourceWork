@@ -9,12 +9,20 @@ SniffManager::SniffManager(QString ip)
 
 void SniffManager::start_sniff()
 {
-    _snifferLogic->ConfigureSocket(this->_ip);
-    this->isContinueSniff = true;
+    try
+    {
+        _snifferLogic->ConfigureSocket(this->_ip);
+        this->isContinueSniff = true;
+    }
+    catch(SnifferException* ex)
+    {
+        emit this->error_occured(ex);
+        return;
+    }
 
     while (this->isContinueSniff)
     {
-        Package package = this->_snifferLogic->ParseIPHeader(this->_snifferLogic->StartSniff());
+        Package package = this->_snifferLogic->StartSniff();
 
         for (auto it : *this->_current_packages)
         {
@@ -24,8 +32,11 @@ void SniffManager::start_sniff()
             }
         }
 
-        this->_current_packages->append(package);
-        emit this->package_append();
+        if (package.Id != 0)
+        {
+            this->_current_packages->append(package);
+            emit this->package_append();
+        }
     }
 }
 

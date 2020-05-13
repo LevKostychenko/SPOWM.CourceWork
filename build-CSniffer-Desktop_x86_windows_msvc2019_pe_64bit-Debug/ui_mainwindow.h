@@ -57,8 +57,16 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *infoLayout;
     QLabel *infoLabel;
-    QVBoxLayout *dataLayout;
-    QLabel *dataLabel;
+    QWidget *infoWidget;
+    QHBoxLayout *dataLayot;
+    QVBoxLayout *hexLayout;
+    QLabel *hexPayload;
+    QScrollArea *scrollArea_2;
+    QWidget *hexWidget;
+    QVBoxLayout *asciiLayout;
+    QLabel *ASCIIpayload;
+    QScrollArea *scrollArea_3;
+    QWidget *asciiWidget;
     QMenuBar *menubar;
     QMenu *menuTools;
     QStatusBar *statusbar;
@@ -68,7 +76,7 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(789, 534);
-        MainWindow->setMaximumSize(QSize(1100, 600));
+        MainWindow->setMaximumSize(QSize(2000, 1500));
         actionCler = new QAction(MainWindow);
         actionCler->setObjectName(QString::fromUtf8("actionCler"));
         QIcon icon;
@@ -191,7 +199,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 642, 345));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 642, 139));
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout_3->addWidget(scrollArea);
@@ -218,21 +226,60 @@ public:
 
         infoLayout->addWidget(infoLabel);
 
+        infoWidget = new QWidget(centralwidget);
+        infoWidget->setObjectName(QString::fromUtf8("infoWidget"));
+
+        infoLayout->addWidget(infoWidget);
+
 
         horizontalLayout->addLayout(infoLayout);
 
-        dataLayout = new QVBoxLayout();
-        dataLayout->setObjectName(QString::fromUtf8("dataLayout"));
-        dataLabel = new QLabel(centralwidget);
-        dataLabel->setObjectName(QString::fromUtf8("dataLabel"));
-        dataLabel->setFont(font2);
-        dataLabel->setStyleSheet(QString::fromUtf8("font-weight: bold;\n"
-""));
+        dataLayot = new QHBoxLayout();
+        dataLayot->setObjectName(QString::fromUtf8("dataLayot"));
+        hexLayout = new QVBoxLayout();
+        hexLayout->setObjectName(QString::fromUtf8("hexLayout"));
+        hexPayload = new QLabel(centralwidget);
+        hexPayload->setObjectName(QString::fromUtf8("hexPayload"));
+        hexPayload->setFont(font2);
 
-        dataLayout->addWidget(dataLabel);
+        hexLayout->addWidget(hexPayload);
+
+        scrollArea_2 = new QScrollArea(centralwidget);
+        scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
+        scrollArea_2->setWidgetResizable(true);
+        hexWidget = new QWidget();
+        hexWidget->setObjectName(QString::fromUtf8("hexWidget"));
+        hexWidget->setGeometry(QRect(0, 0, 361, 196));
+        scrollArea_2->setWidget(hexWidget);
+
+        hexLayout->addWidget(scrollArea_2);
 
 
-        horizontalLayout->addLayout(dataLayout);
+        dataLayot->addLayout(hexLayout);
+
+        asciiLayout = new QVBoxLayout();
+        asciiLayout->setObjectName(QString::fromUtf8("asciiLayout"));
+        ASCIIpayload = new QLabel(centralwidget);
+        ASCIIpayload->setObjectName(QString::fromUtf8("ASCIIpayload"));
+        ASCIIpayload->setFont(font2);
+
+        asciiLayout->addWidget(ASCIIpayload);
+
+        scrollArea_3 = new QScrollArea(centralwidget);
+        scrollArea_3->setObjectName(QString::fromUtf8("scrollArea_3"));
+        scrollArea_3->setWidgetResizable(true);
+        asciiWidget = new QWidget();
+        asciiWidget->setObjectName(QString::fromUtf8("asciiWidget"));
+        asciiWidget->setGeometry(QRect(0, 0, 360, 196));
+        scrollArea_3->setWidget(asciiWidget);
+
+        asciiLayout->addWidget(scrollArea_3);
+
+
+        dataLayot->addLayout(asciiLayout);
+
+
+        horizontalLayout->addLayout(dataLayot);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -262,7 +309,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionCler->setText(QCoreApplication::translate("MainWindow", "Cler", nullptr));
+        actionCler->setText(QCoreApplication::translate("MainWindow", "Clear", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "Choose IP to bind", nullptr));
         startButton->setText(QCoreApplication::translate("MainWindow", "Start sniff", nullptr));
         stopButton->setText(QCoreApplication::translate("MainWindow", "Stop sniff", nullptr));
@@ -271,7 +318,8 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "SOURCE IP", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "DESTINATION IP", nullptr));
         infoLabel->setText(QCoreApplication::translate("MainWindow", "Info", nullptr));
-        dataLabel->setText(QCoreApplication::translate("MainWindow", "Data", nullptr));
+        hexPayload->setText(QCoreApplication::translate("MainWindow", "HEX payload data:", nullptr));
+        ASCIIpayload->setText(QCoreApplication::translate("MainWindow", "ASCII payload data:", nullptr));
         menuTools->setTitle(QCoreApplication::translate("MainWindow", "Tools", nullptr));
     } // retranslateUi
 

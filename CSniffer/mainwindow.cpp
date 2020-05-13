@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsColorizeEffect>
 #include <QPropertyAnimation>
+#include <QDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -83,9 +84,15 @@ void MainWindow::on_startButton_clicked()
 
     connect(this->_managerThread, SIGNAL(started()), this->_sniffManager, SLOT(start_sniff()));
     connect(this->_sniffManager, SIGNAL(package_append()), this, SLOT(on_package_added()));
+    connect(this->_sniffManager, SIGNAL(error_occured(SnifferException*)), this, SLOT(on_error_occured(SnifferException*)));
 
     this->is_manager_thread_created = true;
     this->_managerThread->start();
+}
+
+void MainWindow::on_error_occured(SnifferException* exception)
+{
+    ShowMessageWindow(exception->Message);
 }
 
 void MainWindow::on_stopButton_clicked()
@@ -95,7 +102,16 @@ void MainWindow::on_stopButton_clicked()
 
 void MainWindow::on_package_added()
 { 
-    Package package = this->_sniffManager->GetLastAddedPackage();   
+    Package package;
+
+    try
+    {
+        package = this->_sniffManager->GetLastAddedPackage();
+    }
+    catch (SnifferException* ex)
+    {
+        ShowMessageWindow(ex->Message);
+    }
 
     if(IsPackageSuitableForApplyingFilters(package))
     {
@@ -123,6 +139,7 @@ void MainWindow::on_ipBox_currentTextChanged(const QString &arg1)
     if (this->is_window_configured)
     {
         this->_sniffManager->SetNewIp(arg1);
+        UpdateScrollArea(QList<Package>());
     }
 }
 
@@ -229,4 +246,17 @@ void MainWindow::on_destinationIpSearch_currentIndexChanged(const QString &arg1)
         this->current_dst_search_val = arg1;
         UpplyFilters();
     }
+}
+
+void MainWindow::ShowMessageWindow(QString message)
+{
+    QDialog* dialog = new QDialog();
+    dialog->setModal(true);
+    QHBoxLayout* layout = new QHBoxLayout();
+    QLabel* lab = new QLabel();
+    lab->setText(message);
+    layout->addWidget(lab);
+    dialog->setLayout(layout);
+    dialog->exec();
+    return;
 }

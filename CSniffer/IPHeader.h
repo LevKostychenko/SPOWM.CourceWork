@@ -2,7 +2,8 @@
 #define IPHEADER_H
 struct IPHeader
 {
-     unsigned char ver_len;		// версия и длина заголовка
+     unsigned char ip_header_len:4; // длина заголовка
+     unsigned char ip_version :4; // версия IPv4
      unsigned char tos;			// тип сервиса
      unsigned short length;		// длина всего пакета
      unsigned short id;			// Id

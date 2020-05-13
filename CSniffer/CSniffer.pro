@@ -38,6 +38,8 @@ HEADERS += \
     SnifferException.h \
     SnifferLogic.h \
     SnifferLogicBase.h \
+    TCPHeader.h \
+    UDPHeader.h \
     mainwindow.h
 
 FORMS += \

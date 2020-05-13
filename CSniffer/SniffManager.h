@@ -26,6 +26,7 @@ public slots:
 signals:
     void package_append();
     void close_sniffer();
+    void error_occured(SnifferException* exception);
 };
 
 #endif // SNIFFMANAGER_H
